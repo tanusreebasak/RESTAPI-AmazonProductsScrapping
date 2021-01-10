@@ -58,7 +58,7 @@ def addToDB():
     return('Suucessfully added the payload to the MongoDB database')
     
 
-@app.route("/api/get",methods=['GET'])  # Adding endpoint for adding to database
+@app.route("/api/get",methods=['GET'])  # Adding endpoint for fetching all the document
 def get():
     documents = collection.find()
     response = []
@@ -68,7 +68,7 @@ def get():
         response.append(document)
     return jsonify(response)
 
-@app.route("/api/get/url",methods=['GET'])  # Adding endpoint for adding to database
+@app.route("/api/get/url",methods=['GET'])  # Adding endpoint to filter out the payload based on url
 def get_document_by_url():
     url = request.args['url']         
     documents = collection.find({'url': url})
