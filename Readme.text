@@ -1,0 +1,28 @@
+Following are the REST API ENDPOINTS:
+
+POST /api/scrap?url=<url link>   ---> Returns the scraped amazon url products data with timestamp of scrapping
+POST /api/scrap/add?url=<url>    ---> Adds the scraped data to the database with timestamp of addition
+GET /api/get                     ---> Returns the list of documents
+GET /api/get/url?url=<url link>  ---> Returns list of document by url
+
+
+URLS to test: 
+
+https://www.amazon.in/Amazon-Brand-Solimo-Cotton-Paisley/dp/B06WLGNSVJ
+https://www.amazon.in/dp/B07X9YN2FJ
+https://www.amazon.in/RiteBite-Max-Protein-Work-Out-Almond/dp/B01M69GJOO
+https://www.amazon.in/dp/B077GTDWSJ
+
+
+
+How to build:
+
+Prerequisites: Docker
+
+Run the following commands:
+
+$ docker image build -t scrap-flaskapp .  #Finds the dockerfile in the current directory and builds an image named scrap-flaskapp: 
+$ docker run -it scrap-flaskapp  # Starts running the docker image
+
+Go to your localhost and check.
+
