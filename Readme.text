@@ -4,10 +4,14 @@ POST /api/scrap?url=<url link>   ---> Returns the scraped amazon url products da
 POST /api/scrap/add?url=<url link>    ---> Adds the scraped data to the database with timestamp of addition
 GET /api/get                     ---> Returns the list of documents
 GET /api/get/url?url=<url link>  ---> Returns list of document by url
+PUT /api/update/price?url=<url link>  --> Updates price if changed
+PUT /api/update/rating?url=<url link> --> Updates rating if changed
 
 Example : POST /api/scrap?url=https://www.amazon.in/Amazon-Brand-Solimo-Cotton-Paisley/dp/B06WLGNSVJ
           POST /api/scrap/add?url=https://www.amazon.in/Amazon-Brand-Solimo-Cotton-Paisley/dp/B06WLGNSVJ
           GET /api/get/url?url=https://www.amazon.in/Amazon-Brand-Solimo-Cotton-Paisley/dp/B06WLGNSVJ
+          PUT /api/update/price?url=https://www.amazon.in/Amazon-Brand-Solimo-Cotton-Paisley/dp/B06WLGNSVJ
+          PUT /api/update/rating?url=https://www.amazon.in/Amazon-Brand-Solimo-Cotton-Paisley/dp/B06WLGNSVJ
           
           
 Sample pictures has been uploaded for users to view the result on making requests to the API endpoints.
