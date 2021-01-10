@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 ################# Building the mongodb connection #####
 database_name = "AmazonScrappedDatabase"
-DB_URI="mongodb+srv://tanusree:{}@amazon-products-data.zjtih.mongodb.net/{}?retryWrites=true&w=majority".format(urllib.parse.quote(mongodb_password),database_name)
+DB_URI="mongodb+srv://{}:{}@amazon-products-data.zjtih.mongodb.net/{}?retryWrites=true&w=majority".format(urllib.parse.quote('tanusree'),urllib.parse.quote(mongodb_password),database_name)
 
 client = pymongo.MongoClient(DB_URI)
 db = client['AmazonScrappedDatabase']
@@ -77,10 +77,40 @@ def get_document_by_url():
         document['_id'] = str(document['_id'])
         document['timestamp'] = str(document['timestamp'])
         response.append(document)
-    return jsonify(response) 
+    return jsonify(response)
 
+@app.route("/api/update/price",methods=['PUT'])  # Adding endpoint to update price
+def put_price():
+    url = request.args['url']
+    data = scrap()    
+    price = data['price']
+    current_price={'$set':{'price':price}}        
+    documents = collection.find_one({'url': url},{'price':1})
+    price_document = documents['price']       
+    document_price ={'price': price_document}
+    if(price == price_document):
+        return('Price of the product in the database ={} and current price from scrapped data is also {}. No update required'.format(price,price_document))
+    else:
+        collection.update_one(document_price,current_price)
+        return('Scraped price is {} and price of the product in database is {} . Successfully updated the price with recent scraped data'.format(price,price_document))
 
-    
+@app.route("/api/update/rating",methods=['PUT'])  # Adding endpoint to update rating
+def put_rating():
+    url = request.args['url']
+    data = scrap()    
+    rating = data['rating']
+    current_rating={'$set': {'rating':rating}}        
+    documents = collection.find_one({'url': url},{'rating':1})
+    rating_document = documents['rating']
+    print('Scraped rating',rating)
+    print('Database rating',rating_document)      
+    document_rating ={'rating': rating_document}
+    if(rating == rating_document):
+        return('Rating of the product in the database = {} and current rating from scrapped data is also {}. No update required'.format(rating,rating_document))
+    else:
+        collection.update_one(document_rating,current_rating)
+        return('Scraped rating is {} and rating of the product in database is {} . Successfully updated the rating with recent scraped data'.format(rating,rating_document))
+
 if __name__=="__main__":
     #app.run(debug=True)
     app.run(host="0.0.0.0",port=5000)
