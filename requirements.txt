@@ -1,4 +1,3 @@
-aniso8601==8.0.0
 click==7.1.2
 Flask==1.1.2
 Flask-RESTful==0.3.8
@@ -11,7 +10,6 @@ six==1.15.0
 SQLAlchemy==1.3.18
 Werkzeug==1.0.1
 beautifulsoup4==4.9.3
-#lxml==4.6.2
 Unidecode==1.1.2
 Flask-PyMongo==2.3.0
 PyMongo==3.11.2
@@ -23,5 +21,4 @@ WTForms==2.3.3
 Flask-WTF==0.14.3
 bson==0.5.10
 docker==4.4.1
-pywin32==227
 websocket-client==0.57.0
