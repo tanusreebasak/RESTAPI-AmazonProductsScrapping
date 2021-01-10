@@ -1,7 +1,7 @@
 Following are the REST API ENDPOINTS:
 
-POST /api/scrap?url=<url link>   ---> Returns the scraped amazon url products data with timestamp of scrapping
-POST /api/scrap/add?url=<url link>    ---> Adds the scraped data to the database with timestamp of addition
+POST /api/scrap?url=<url link>   ---> Returns the scraped amazon url products data with the current timestamp of scrapping
+POST /api/scrap/add?url=<url link>    ---> Adds the scraped data to the database with the current timestamp of addition
 GET /api/get                     ---> Returns the list of documents
 GET /api/get/url?url=<url link>  ---> Returns list of document by url
 PUT /api/update/price?url=<url link>  --> Updates price if changed
