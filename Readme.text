@@ -29,7 +29,7 @@ How to build:
 Prerequisites: Docker
 
 Run the following commands:
-
+$ move to the current working directory where the files are there
 $ docker image build -t scrap-flaskapp .  #Finds the dockerfile in the current directory and builds an image named scrap-flaskapp: 
 $ docker run -it scrap-flaskapp  # Starts running the docker image
 
